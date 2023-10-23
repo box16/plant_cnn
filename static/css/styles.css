@@ -1,0 +1,16 @@
+/* styles.css */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 10px;
+    width: 100%;
+    max-width: 600px; 
+    margin-bottom: 20px;
+}
+
+.gallery img {
+    width: 256px;
+    height: 256px;
+    border-radius: 5px;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf Classifier</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <h1>植物の葉画像分類</h1>
+    <p>葉が1枚だけ、なるべく中心に映った写真をご利用ください。</p>
+    <h2>サンプル</h2>
+    <div class="gallery">
+        <img src="../static/sample_img/D_132.JPG"  alt="病気の葉1">
+        <img src="../static/sample_img/H_25.JPG"   alt="健康な葉1">
+        <img src="../static/sample_img/D_9.JPG"    alt="病気の葉2">
+        <img src="../static/sample_img/H_1038.JPG" alt="健康な葉2">
+        <img src="../static/sample_img/D_368.JPG"  alt="病気の葉3">
+        <img src="../static/sample_img/H_1190.JPG" alt="健康な葉3">
+    </div>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/jpeg, image/png">
+        <input type="submit" value="画像をアップロード">
+    </form>
+    <br>
+    <div>
+        {% if result %}
+            <h2>分類結果: {{ result }}</h2>
+            <img src="{{ url_for('static', filename='uploads/' + image_file) }}" alt="Uploaded Image" width="300">
+        {% endif %}
+    </div>
+</body>
+</html>
