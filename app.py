@@ -10,7 +10,8 @@ app = Flask(__name__)
 model = load_model("leaf_disease_model.h5")
 
 # 画像のアップロード先の設定
-UPLOAD_FOLDER = "static/uploads"
+THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(THIS_FOLDER, "static/uploads")
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
