@@ -20,6 +20,8 @@ def allowed_file(filename):
 
 # UPLOAD_FOLDERのクリーニング
 def delete_all_files_in_folder(folder_path):
+    if not os.path.exists(folder_path):
+        return
     for filename in os.listdir(folder_path):
         file_path = os.path.join(folder_path, filename)
         if os.path.isfile(file_path):
@@ -51,6 +53,4 @@ def classify_leaf():
     return render_template("index.html", result=None)
 
 if __name__ == "__main__":
-    if not os.path.exists(UPLOAD_FOLDER):
-        os.makedirs(UPLOAD_FOLDER)
     app.run(debug=False)
