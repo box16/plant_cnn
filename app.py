@@ -18,7 +18,7 @@ def classify_leaf():
     if request.method == "POST":
         file = request.files["file"]
         if file and allowed_file(file.filename):
-            img = Image.open(file).resize((128, 128))
+            img = Image.open(file).convert('RGB').resize((128, 128))
             img = np.array(img)
             img = img / 255.0  # 画像データを正規化
             img = np.expand_dims(img, axis=0)  # バッチの次元を追加
@@ -34,4 +34,4 @@ def classify_leaf():
     return render_template("index.html", result=None)
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
